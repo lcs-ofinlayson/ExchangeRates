@@ -31,3 +31,7 @@ struct Symbols: Codable {
     var USD: String
     var ZAR: String
 }
+
+struct Converted: Codable {
+    var result: Double
+}

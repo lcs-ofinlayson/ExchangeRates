@@ -30,6 +30,24 @@ struct ExchangeView: View {
             Spacer()
         }
         .padding()
+        .task {
+            await getCurrencies()
+        }
+    }
+    func getCurrencies() async {
+        let url = "https://api.apilayer.com/exchangerates_data/symbols"
+        var request = URLRequest(url: URL(string: url)!,timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        request.addValue("FixeMjZs6M6bbiEs1tG0KG3xQLGMBSOq", forHTTPHeaderField: "apikey")
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+        }
+        task.resume()
     }
 }
 

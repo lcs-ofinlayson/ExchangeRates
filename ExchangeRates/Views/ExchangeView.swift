@@ -15,6 +15,13 @@ struct ExchangeView: View {
     }
     @State var currency1 = 0
     @State var currency2 = 1
+    @State var input = "100"
+    var amount: Double {
+        guard let amount = Double(input) else {
+            return 100.0
+        }
+        return amount
+    }
     @State var amountConverted = Converted(result: 100.0)
     var body: some View {
         VStack(spacing: 30) {
@@ -38,7 +45,7 @@ struct ExchangeView: View {
             }
             HStack {
                 Text("Amount of Currency:")
-                TextField("Amount", text: .constant("100.00"))
+                TextField("Amount", text: $input)
             }
             Button(action: {
                 Task {
@@ -70,7 +77,7 @@ struct ExchangeView: View {
         }
     }
     func getConversion() async {
-        let url = "https://api.apilayer.com/exchangerates_data/convert?to=\(symbols[currency2])&from=\(symbols[currency1])&amount=100"
+        let url = "https://api.apilayer.com/exchangerates_data/convert?to=\(symbols[currency2])&from=\(symbols[currency1])&amount=\(amount)"
         print(url)
         var request = URLRequest(url: URL(string: url)!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"

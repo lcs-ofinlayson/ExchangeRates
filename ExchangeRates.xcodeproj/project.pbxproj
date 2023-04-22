@@ -11,6 +11,7 @@
 		81D336A629F18CD400CC4C00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D336A529F18CD400CC4C00 /* Assets.xcassets */; };
 		81D336A929F18CD400CC4C00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D336A829F18CD400CC4C00 /* Preview Assets.xcassets */; };
 		81D336B129F1942000CC4C00 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D336B029F1942000CC4C00 /* ExchangeView.swift */; };
+		81D336B429F1952C00CC4C00 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D336B329F1952C00CC4C00 /* Exchange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		81D336A529F18CD400CC4C00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81D336A829F18CD400CC4C00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		81D336B029F1942000CC4C00 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
+		81D336B329F1952C00CC4C00 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +38,6 @@
 			isa = PBXGroup;
 			children = (
 				81D336A029F18CD200CC4C00 /* ExchangeRates */,
-				81D336AF29F1940100CC4C00 /* Views */,
 				81D3369F29F18CD200CC4C00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,7 +53,9 @@
 		81D336A029F18CD200CC4C00 /* ExchangeRates */ = {
 			isa = PBXGroup;
 			children = (
+				81D336B229F194FF00CC4C00 /* Model */,
 				81D336A129F18CD200CC4C00 /* ExchangeRatesApp.swift */,
+				81D336AF29F1940100CC4C00 /* Views */,
 				81D336A529F18CD400CC4C00 /* Assets.xcassets */,
 				81D336A729F18CD400CC4C00 /* Preview Content */,
 			);
@@ -73,6 +76,14 @@
 				81D336B029F1942000CC4C00 /* ExchangeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		81D336B229F194FF00CC4C00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				81D336B329F1952C00CC4C00 /* Exchange.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +158,7 @@
 			files = (
 				81D336A229F18CD200CC4C00 /* ExchangeRatesApp.swift in Sources */,
 				81D336B129F1942000CC4C00 /* ExchangeView.swift in Sources */,
+				81D336B429F1952C00CC4C00 /* Exchange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

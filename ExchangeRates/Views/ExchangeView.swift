@@ -9,18 +9,30 @@ import SwiftUI
 
 struct ExchangeView: View {
     @State var listOfCurrencies: ListOfCurrencies = ListOfCurrencies(symbols: Symbols(AUD: "", BRL: "", BTC: "", CAD: "", CHF: "", CNY: "", EGP: "", EUR: "", GBP: "", HKD: "", INR: "", JPY: "", MXN: "", NZD: "", RUB: "", TRY: "", USD: "", ZAR: ""))
+    let symbols = ["AUD", "BRL", "BTC", "CAD", "CHF", "CNY", "EGP", "EUR", "GBP", "HKD", "INR", "JPY", "MXN", "NZD", "RUB", "TRY", "USD", "ZAR"]
+    var names: [String] {
+        return [listOfCurrencies.symbols.AUD, listOfCurrencies.symbols.BRL, listOfCurrencies.symbols.BTC, listOfCurrencies.symbols.CAD, listOfCurrencies.symbols.CHF, listOfCurrencies.symbols.CNY, listOfCurrencies.symbols.EGP, listOfCurrencies.symbols.EUR, listOfCurrencies.symbols.GBP, listOfCurrencies.symbols.HKD, listOfCurrencies.symbols.INR, listOfCurrencies.symbols.JPY, listOfCurrencies.symbols.MXN, listOfCurrencies.symbols.NZD, listOfCurrencies.symbols.RUB, listOfCurrencies.symbols.TRY, listOfCurrencies.symbols.USD, listOfCurrencies.symbols.ZAR]
+    }
+    @State var currency1 = 0
+    @State var currency2 = 1
     var body: some View {
         VStack(spacing: 30) {
             Text("Exchange Rates")
                 .font(.title)
             HStack {
                 Text("Convert")
-                Picker("Select Currency",selection: .constant(0)) {
-                    Text("CAD")
+                Picker("Select Currency",selection: $currency1) {
+                    ForEach(0..<18) { currency in
+                        Text(names[currency])
+                    }
                 }
+            }
+            HStack {
                 Text("to")
-                Picker("Select Currency",selection: .constant(0)) {
-                    Text("USD")
+                Picker("Select Currency",selection: $currency2) {
+                    ForEach(0..<18) { currency in
+                        Text(names[currency])
+                    }
                 }
             }
             HStack {

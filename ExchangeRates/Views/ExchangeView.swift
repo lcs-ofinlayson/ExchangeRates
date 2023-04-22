@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExchangeView: View {
+    @State var listOfCurrencies: ListOfCurrencies = ListOfCurrencies(symbols: Symbols(AUD: "", BRL: "", BTC: "", CAD: "", CHF: "", CNY: "", EGP: "", EUR: "", GBP: "", HKD: "", INR: "", JPY: "", MXN: "", NZD: "", RUB: "", TRY: "", USD: "", ZAR: ""))
     var body: some View {
         VStack(spacing: 30) {
             Text("Exchange Rates")
@@ -39,15 +40,14 @@ struct ExchangeView: View {
         var request = URLRequest(url: URL(string: url)!,timeoutInterval: Double.infinity)
         request.httpMethod = "GET"
         request.addValue("FixeMjZs6M6bbiEs1tG0KG3xQLGMBSOq", forHTTPHeaderField: "apikey")
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-          guard let data = data else {
-            print(String(describing: error))
-            return
-          }
-          print(String(data: data, encoding: .utf8)!)
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let decoder = JSONDecoder()
+            listOfCurrencies = try decoder.decode(ListOfCurrencies.self, from: data)
+            print(String(data: data, encoding: .utf8)!)
+        } catch {
+            print(error.localizedDescription)
         }
-        task.resume()
     }
 }
 
